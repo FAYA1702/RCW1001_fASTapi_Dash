@@ -2,6 +2,9 @@
 
 import dash
 from dash import html, dcc
+import requests
+from dash.dependencies import Input, Output
+
 
 
 # initializer 'application Dash
