@@ -1,4 +1,5 @@
 
+
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')))
 from fastapi import FastAPI,Request,Form
@@ -55,6 +56,8 @@ def get_external_info():
 }
     
     
+    
+
 @app.get("/")
 async def home_page(request:Request):
     info = get_external_info()
