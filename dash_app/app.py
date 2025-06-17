@@ -5,7 +5,7 @@ import requests
 # 🔧 Fonction pour récupérer la météo depuis une API externe
 def fetch_weather_info():
     try:
-        response = requests.get("http://127.0.0.1:8000/info", timeout=2)
+        response = requests.get("http://127.0.0.1:8001/info", timeout=2)
         return response.json()
     except Exception as e:
         print("Erreur météo:", e)
