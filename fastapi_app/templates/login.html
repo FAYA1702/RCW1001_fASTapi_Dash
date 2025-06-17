@@ -1,18 +1,17 @@
-{% extends "base.html" %}
+{% extends   "base.html" %}
 
-{% block title %}Connexion{% endblock %}
+{%  block title %}  Login {% endblock %}
 
-{% block content %}
-    <h2>Connexion</h2>
+{% block content %} 
     <form method="post" action="/login">
-        <label>Nom d'utilisateur :</label><br>
         <input type="text" name="username" placeholder="Username" required><br>
-        <label>Mot de passe :</label><br>
-        <input type="password" name="password" placeholder="Password" required><br><br>
-        <button type="submit">Se connecter</button>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit"> Login </button>
     </form>
 
     {% if error %}
-        <p style="color: red;">{{ error }}</p>
+        <p style="color:red"> {{error}}   </p>
     {% endif %}
-{% endblock %}
+
+
+{%  endblock %}

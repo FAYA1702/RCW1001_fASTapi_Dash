@@ -1,64 +1,69 @@
+
+
 import dash
 from dash import html, dcc
 
-# Initialiser l'application Dash
-app = dash.Dash(__name__, requests_pathname_prefix='/dashboard/')
 
-# Layout de l'application
+# initializer 'application Dash
+app = dash.Dash(__name__, requests_pathname_prefix ='/dashboard/')
+
+
+# Definir Dash layout avec 4 graph
 app.layout = html.Div(children=[
-
-    # Navigation
     html.Div([
-        html.A('Accueil', href='/'),
-        " | ",
-        html.A('Logout', href='/logout'),
-    ], style={'marginTop': '25px'}),
-
-    html.H1("Dashboard avec FastAPI + Dash"),
-
-    # === LINE GRAPH ===
-    html.H2("**** Line Graph ***"),
+        html.A('Acceuil', href='/'),
+        "|",
+        html.A("Logout", href="/logout")
+    ], style={'marginTop':25}),
+    
+    html.H1(children = "Example de Dashboard" ),
+    
+    html.H2("*** Bar Graph *** "),
     dcc.Graph(
-        id='exm1',
+        id="exm1",
         figure={
-            "data": [
-                {"x": [1, 3, 5], "y": [10, 12, 14], "type": "line", "name": "exemple1"},
-                {"x": [2, 4, 6], "y": [13, 15, 17], "type": "line", "name": "exemple2"},
+            "data":[
+                {"x":[5,7,12], "y":[10,16,11] , "type":"bar" , "name":"exmple1"},
+                {"x":[8,18,22], "y":[5,8,3] , "type":"bar" , "name":"exmple2"}
             ]
         }
     ),
-
-    # === SCATTER GRAPH ===
-    html.H2("**** Scatter Plot Graph ***"),
+    
+    html.H2("*** Line Graph *** "),
     dcc.Graph(
-        id='exm2',
+        id="exm2",
         figure={
-            "data": [
-                {"x": [1, 3, 5, 7], "y": [10, 12, 14, 16], "type": "scatter", "mode": "markers", "name": "scatter exemple1"},
-                {"x": [2, 4, 6, 8], "y": [13, 15, 17, 19], "type": "scatter", "mode": "markers", "name": "scatter exemple2"},
+            "data":[
+                {"x":[1,3,5], "y":[10,12,14] , "type":"line" , "name":"exmple3"},
+                {"x":[2,4,6], "y":[13,15,17] , "type":"line" , "name":"exmple4"}
             ]
         }
     ),
-
-    # === PIE CHART ===
-    html.H2("**** Pie Chart Graph ***"),
+    
+    html.H2("*** scatter Plot Graph *** "),
     dcc.Graph(
-        id='exm3',
+        id="exm3",
         figure={
-            "data": [
-                {
-                    "labels": ["A", "B", "C"],
-                    "values": [10, 12, 14],
-                    "type": "pie",
-                    "name": "pie chart exemple"
-                }
+            "data":[
+                {"x":[1,3,5,7], "y":[10,12,14,16] , "type":"scatter" , "mode":"markers","name":"scatter exmpl1"},
+                {"x":[2,4,6,8], "y":[13,15,17,19] , "type":"scatter" , "mode":"markers","name":"scatter exmpl2"}
+            ]
+        }
+    ),
+    
+    html.H2("*** Pie Chart Graph *** "),
+    dcc.Graph(
+        id="exm4",
+        figure={
+            "data":[
+                {"labels":["A","B","C"], "y":[10,12,14] , "type":"pie" , "name":"pie chart expl1"},
             ],
-            "layout": {
-                "title": "Répartition en secteurs"
-            }
+            "layout":{"title":"pie chart example"}
         }
-    )
+    ),
+    
+    
+    
 ])
 
-# Pour l'intégration avec FastAPI
 server = app.server
