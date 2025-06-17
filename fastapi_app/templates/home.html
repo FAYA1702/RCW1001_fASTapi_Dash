@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-</head>
-<body>
-    <h2>Connexion</h2>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
-    <form method="post" action="/login">
-        <label>Nom d'utilisateur :</label><br>
-        <input type="text" name="username" required><br>
-        <label>Mot de passe :</label><br>
-        <input type="password" name="password" required><br><br>
-        <button type="submit">Se connecter</button>
-    </form>
-</body>
-</html>
+{% extends "base.html"  %}  
+
+{% block titel %}  Home {% endblock %}
+
+
+{% block content  %}
+    <h1>Welcome to the FastAPI-Dash Application</h1>
+    <p>il s'agit d'une application Web qui intègre FastAPI et Dash pour 
+        la visualisation des données et la gestion des utilisateurs.</p>
+
+     <h3> Aujourd'hui est {{info.date}} et il est {{info.time}}</h3>   
+
+
+     <p>City : {{info.weather.city}}</p>
+     <p> Temperature : {{info.weather.temperature}}</p>
+     <p>Description: {{info.weather.description}}</p>
+
+
+{% endblock %}
