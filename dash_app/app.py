@@ -2,7 +2,7 @@ import dash
 from dash import html, dcc
 import requests
 
-# 🔧 Fonction pour récupérer la météo depuis une API externe
+#  Fonction pour récupérer la météo depuis une API externe
 def fetch_weather_info():
     try:
         response = requests.get("http://127.0.0.1:8001/info", timeout=2)
@@ -19,13 +19,13 @@ def fetch_weather_info():
             }
         }
 
-# 📦 Récupération des données météo
+#  Récupération des données météo
 weather_info = fetch_weather_info()
 
-# 🌐 Initialisation de l'application Dash
+#  Initialisation de l'application Dash
 app = dash.Dash(__name__, requests_pathname_prefix='/dashboard/')
 
-# 🎨 Layout principal
+#  Layout principal
 app.layout = html.Div(children=[
 
     # Barre de navigation
@@ -37,7 +37,7 @@ app.layout = html.Div(children=[
 
     html.H1(children="Exemple de Dashboard"),
 
-    # 📡 Bloc météo
+    #  Bloc météo
     html.Div([
         html.H3("Informations météo"),
         html.P(f"Aujourd'hui est le {weather_info['date']} à {weather_info['time']}"),
@@ -46,7 +46,7 @@ app.layout = html.Div(children=[
         html.P(f"Description : {weather_info['weather']['description']}"),
     ], style={"margin": "20px 0"}),
 
-    # 📊 Graphiques
+    # Graphiques
     html.H2("*** Bar Graph *** "),
     dcc.Graph(
         id="exm1",
@@ -92,5 +92,5 @@ app.layout = html.Div(children=[
     ),
 ])
 
-# 🎯 Lien avec FastAPI
+# Lien avec FastAPI
 server = app.server
