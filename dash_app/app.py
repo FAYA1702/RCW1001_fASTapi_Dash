@@ -5,7 +5,8 @@ import requests
 #  Fonction pour récupérer la météo depuis une API externe http://127.0.0.1:8001/info
 def fetch_weather_info():
     try:
-        response = requests.get("rcw1002-projet-2-hjgzchcbayepbbfe.canadacentral-01.azurewebsites.net/info", timeout=2)
+        response = requests.get("http://rcw1002-projet-2-hjgzchcbayepbbfe.canadacentral-01.azurewebsites.net/info", timeout=2)
+        return response.json()  # ✅ Cette ligne manquait !
     except Exception as e:
         print("Erreur météo:", e)
         return {
@@ -17,6 +18,7 @@ def fetch_weather_info():
                 "description": "N/A"
             }
         }
+
 
 #  Récupération des données météo
 weather_info = fetch_weather_info()
