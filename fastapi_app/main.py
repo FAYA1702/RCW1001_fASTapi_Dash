@@ -24,7 +24,8 @@ static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),"static"))
 templates = Jinja2Templates(directory=templates_dir)
 
 # servir des fichiers statiques
-app.mount("/static", StaticFiles(directory=static_dir))
+# app.mount("/static", StaticFiles(directory=static_dir))
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 #Montez l'application Dash sou le chemain /dashboard
 app.mount("/dashboard", WSGIMiddleware(app_dash.server))
@@ -83,7 +84,7 @@ import requests
 
 def fetch_weather_info():
     try:
-        response = requests.get("http://127.0.0.1:8000/info", timeout=2)
+        response = requests.get("http://rcw1002-projet-2-hjgzchcbayepbbfe.canadacentral-01.azurewebsites.net/info", timeout=2)
         return response.json()
     except Exception as e:
         print("Erreur météo:", e)
